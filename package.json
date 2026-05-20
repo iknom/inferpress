@@ -1,14 +1,33 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "inferpress",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "description": "Type-safe express validation library",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "pnpm build"
   },
-  "dependencies": {},
+  "keywords": [
+    "express",
+    "validation",
+    "typescript",
+    "schema",
+    "infer"
+  ],
+  "author": "TroveTeam",
+  "license": "MIT",
+
+  "peerDependencies": {
+    "express": "^5.0.0"
+  },
+
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.1",
     "typescript": "^5.5.3"
-  },
-  "private": true
+  }
 }

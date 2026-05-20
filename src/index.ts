@@ -1,1 +1,3 @@
-console.log('Happy developing ✨')
+export * from "./schema";
+export * from "./types";
+export * from "./routes";
