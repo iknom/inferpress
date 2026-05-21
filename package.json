@@ -1,6 +1,6 @@
 {
   "name": "inferpress",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Type-safe express validation library",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

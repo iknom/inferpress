@@ -29,17 +29,17 @@ export type SchemaType =
 };
 
 export const v = {
-    string: (): SchemaType => ({
+    string: () => ({
         type: DataTypes.STRING,
-    }),
+    } as const),
 
-    number: (): SchemaType => ({
+    number: () => ({
         type: DataTypes.NUMBER,
-    }),
+    }) as const,
 
-    boolean: (): SchemaType => ({
+    boolean: () => ({
         type: DataTypes.BOOLEAN,
-    }),
+    }) as const,
 
     any: (): SchemaType => ({
         type: DataTypes.ANY,
@@ -49,19 +49,38 @@ export const v = {
         type: DataTypes.BLOB,
     }),
 
-    nullable: (value: SchemaType): SchemaType => ({
+    nullable: <
+        T extends SchemaType
+    >(
+        value: T
+    ): {
+        type: DataTypes.NULLABLE;
+        value: T;
+    } => ({
         type: DataTypes.NULLABLE,
         value,
     }),
 
-    array: (items: SchemaType): SchemaType => ({
+    array: <
+        T extends SchemaType
+    >(
+        items: T
+    ): {
+        type: DataTypes.ARRAY;
+        items: T;
+    } => ({
         type: DataTypes.ARRAY,
         items,
     }),
 
-    object: (
-        schema: Record<string, SchemaType>
-    ): SchemaType => ({
+    object: <
+        T extends Record<string, SchemaType>
+    >(
+        schema: T
+    ): {
+        type: DataTypes.OBJECT;
+        schema: T;
+    } => ({
         type: DataTypes.OBJECT,
         schema,
     }),

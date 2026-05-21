@@ -84,6 +84,16 @@ export default function validator(
 
         case DataTypes.ARRAY:
 
+            if (typeof value === "string") {
+
+                try {
+                    value = JSON.parse(value);
+                } catch {
+                    throw new Error("Invalid array JSON");
+                }
+
+            }
+
             if (!Array.isArray(value)) {
                 throw new Error("Expected array");
             }
